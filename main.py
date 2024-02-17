@@ -18,7 +18,7 @@ print("Please scan the QR code and press enter")
 time.sleep(30)
 
 # Define the list of recipients and the message to be sent
-#  = ["+918623886205","+918390224002"]  # Add as many recipients as you want
+#  = [""]  # Add as many recipients as you want
 # message = "Your message here test selenium"
 
 # Loop through the recipients and send the message
