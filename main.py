@@ -4,8 +4,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
 
+# reading csv file using pandas
 df = pd.read_csv("Chess_Registrations.csv", header=None)
 
+# converting data frame into multidimensional list[[name,phone]]
 recipients = df.values.tolist()
 
 # Initialize Chrome WebDriver
@@ -14,12 +16,10 @@ driver = webdriver.Chrome()
 # Open WhatsApp Web
 driver.get("https://web.whatsapp.com/")
 print("Please scan the QR code and press enter")
-# input()
+
+# stopping forward action till browser page loads
 time.sleep(30)
 
-# Define the list of recipients and the message to be sent
-#  = [""]  # Add as many recipients as you want
-# message = "Your message here test selenium"
 
 # Loop through the recipients and send the message
 for name, phone in recipients:
@@ -42,12 +42,10 @@ for name, phone in recipients:
     message_box = driver.find_element(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]')
     message_box.click()
     driver.implicitly_wait(4)
-    message_box.send_keys(f"Hey {name}! Join our exclusive Respawn Chess WhatsApp group for epic chess action! Let's strategize and have fun together!  #RespawnChess  Group Link: [https://chat.whatsapp.com/H95K0VrYH6jEsUNQfCj5xM] Note: If the link isn't clickable, save the contact and try again. Feel free to text back if needed!")
+    message_box.send_keys(f"Hey {name}! Join our exclusive Respawn Chess WhatsApp group for epic chess action! Let's strategize and have fun together!  #RespawnChess  Group Link: [Link] Note: If the link isn't clickable, save the contact and try again. Feel free to text back if needed!")
     message_box.send_keys(Keys.RETURN)
 
     time.sleep(2)
-    # send_button = driver.find_element(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[2]/button')
-    # send_button.click()
 
     print(f"Message sent to {phone}")
 
